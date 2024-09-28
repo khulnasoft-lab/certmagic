@@ -5,10 +5,10 @@ name: Tests
 on:
   push:
     branches:
-      - master
+      - khulnasoft
   pull_request:
     branches:
-      - master
+      - khulnasoft
 
 jobs:
   test:
