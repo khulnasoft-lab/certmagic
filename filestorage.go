@@ -28,7 +28,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/caddyserver/certmagic/internal/atomicfile"
+	"github.com/khulnasoft-lab/certmagic/internal/atomicfile"
 )
 
 // FileStorage facilitates forming file paths derived from a root
@@ -64,7 +64,7 @@ import (
 // implies imperfect mutual exclusion if locks become stale, but
 // that is probably less severe a consequence than infinite loops.
 //
-// See https://github.com/caddyserver/caddy/issues/4448 for discussion.
+// See https://github.com/khulnasoft/kengine/issues/4448 for discussion.
 // See commit 468bfd25e452196b140148928cdd1f1a2285ae4b for where we
 // switched away from using .unlock files.
 type FileStorage struct {
@@ -232,7 +232,7 @@ func (s *FileStorage) Lock(ctx context.Context, name string) error {
 		case fileLockIsStale(meta):
 			// lock file is stale - delete it and try again to obtain lock
 			// (NOTE: locking becomes imperfect if lock files are stale; known solutions
-			// either have potential to cause infinite loops, as in caddyserver/caddy#4448,
+			// either have potential to cause infinite loops, as in khulnasoft/kengine#4448,
 			// or must give up on perfect mutual exclusivity; however, these cases are rare,
 			// so we prefer the simpler solution that avoids infinite loops)
 			log.Printf("[INFO][%s] Lock for '%s' is stale (created: %s, last update: %s); removing then retrying: %s",
@@ -370,7 +370,7 @@ func updateLockfileFreshness(filename string) (bool, error) {
 	// sync to device; we suspect that sometimes file systems
 	// (particularly AWS EFS) don't do this on their own,
 	// leaving the file empty when we close it; see
-	// https://github.com/caddyserver/caddy/issues/3954
+	// https://github.com/khulnasoft/kengine/issues/3954
 	return false, f.Sync()
 }
 
@@ -393,7 +393,7 @@ func atomicallyCreateFile(filename string, writeLockInfo bool) error {
 		if err := json.NewEncoder(f).Encode(meta); err != nil {
 			return err
 		}
-		// see https://github.com/caddyserver/caddy/issues/3954
+		// see https://github.com/khulnasoft/kengine/issues/3954
 		if err := f.Sync(); err != nil {
 			return err
 		}

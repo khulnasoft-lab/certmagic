@@ -371,7 +371,7 @@ type DNSManager struct {
 	// *.example.com. We distinguish individual memories by
 	// the value of their TXT records, which should contain
 	// unique challenge tokens.
-	// See https://github.com/caddyserver/caddy/issues/3474.
+	// See https://github.com/khulnasoft/kengine/issues/3474.
 	records   map[string][]dnsPresentMemory
 	recordsMu sync.Mutex
 }
@@ -743,7 +743,7 @@ func robustTryListen(addr string) (net.Listener, error) {
 		// History:
 		// https://caddy.community/t/caddy-retry-error/7317
 		// https://caddy.community/t/v2-upgrade-to-caddy2-failing-with-errors/7423
-		// https://github.com/caddyserver/certmagic/issues/250
+		// https://github.com/khulnasoft-lab/certmagic/issues/250
 		if strings.Contains(listenErr.Error(), "address already in use") ||
 			strings.Contains(listenErr.Error(), "one usage of each socket address") {
 			log.Printf("[WARNING] %v - be sure to set the ACMEIssuer.ListenHost field; assuming conflicting listener is correctly configured and continuing", listenErr)

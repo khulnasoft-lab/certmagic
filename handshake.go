@@ -166,7 +166,7 @@ func (cfg *Config) getCertificateFromCache(hello *tls.ClientHelloInfo) (cert Cer
 	}
 
 	// otherwise, we're bingo on ammo; see issues
-	// caddyserver/caddy#2035 and caddyserver/caddy#1303 (any
+	// khulnasoft/kengine#2035 and khulnasoft/kengine#1303 (any
 	// change to certificate matching behavior must
 	// account for hosts defined where the hostname
 	// is empty or a catch-all, like ":443" or
@@ -348,7 +348,7 @@ func (cfg *Config) getCertDuringHandshake(ctx context.Context, hello *tls.Client
 	// Hence, we use an "almost full" metric to allow for the cache to not be
 	// perfectly full while still being able to load needed certs from storage.
 	// See https://caddy.community/t/error-tls-alert-internal-error-592-again/13272
-	// and caddyserver/caddy#4320.
+	// and khulnasoft/kengine#4320.
 	cfg.certCache.optionsMu.RLock()
 	cacheCapacity := float64(cfg.certCache.options.Capacity)
 	cfg.certCache.optionsMu.RUnlock()

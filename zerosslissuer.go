@@ -25,7 +25,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/caddyserver/zerossl"
+	"github.com/khulnasoft-lab/zerossl"
 	"github.com/mholt/acmez/v2"
 	"github.com/mholt/acmez/v2/acme"
 	"go.uber.org/zap"

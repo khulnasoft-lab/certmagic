@@ -151,7 +151,7 @@ func sendDNSQuery(m *dns.Msg, ns string) (*dns.Msg, error) {
 	udp := &dns.Client{Net: "udp", Timeout: dnsTimeout}
 	in, _, err := udp.Exchange(m, ns)
 	// two kinds of errors we can handle by retrying with TCP:
-	// truncation and timeout; see https://github.com/caddyserver/caddy/issues/3639
+	// truncation and timeout; see https://github.com/khulnasoft/kengine/issues/3639
 	truncated := in != nil && in.Truncated
 	timeoutErr := err != nil && strings.Contains(err.Error(), "timeout")
 	if truncated || timeoutErr {

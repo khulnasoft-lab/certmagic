@@ -1,11 +1,9 @@
-module github.com/caddyserver/certmagic
+module github.com/khulnasoft-lab/certmagic
 
-go 1.21.0
-
-toolchain go1.22.2
+go 1.23.1
 
 require (
-	github.com/caddyserver/zerossl v0.1.3
+	github.com/khulnasoft-lab/zerossl v0.1.0
 	github.com/klauspost/cpuid/v2 v2.2.7
 	github.com/libdns/libdns v0.2.2
 	github.com/mholt/acmez/v2 v2.0.2
